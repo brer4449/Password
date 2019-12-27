@@ -9,18 +9,27 @@
         <title>Passwordz</title>
     </head>
     <body>
-        <h1>Password Generator</h1>
+        <br>
         <div class="container">
+            <h1>Password Generator</h1>
             <form>
                 <div class="form-group">
-                <label for="exampleDropdownFormPassword2">Password</label>
-                <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password">
+                    <label>Password</label>
+                    <input type="text" class="form-control" readonly id="formpass" value="Hello World!" placeholder="Your Password Here!" />
                 </div>
                 <button type="submit" class="btn btn-primary">Generate Password</button>
+                <button type="submit" class="btn btn-primary">Copy to Clipboard</button>
             </form>
+            <br>
+            <p>Passwords generated are going to be between 8 and 128 characters long, containing at least one of the following: uppercase character, lowercase character, numeric character and special character.</p>
         </div>
     </body>
-    <script type="text/javascript" src="/assets/JS/main.js">
+    <script type="text/javascript">
+
+    var randomPass = function randomPass(){
+        document.getElementById("formpass");
+    };
+    console.log(randomPass());
     // var specialChar = [" ", "!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "}", "|", "~", "\'", "\"", "\\" ]
     // console.log(specialChar[32]);
 
@@ -33,10 +42,5 @@
     // var upChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     // console.log(upChar[25]);
 
-    // var contains = function(x){
-    //     for(var i = 0; i<=32; i++){
-            
-    //     }
-    // }
     </script>
 </html>
