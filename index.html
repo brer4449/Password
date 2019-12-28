@@ -15,10 +15,12 @@
             <form>
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="text" class="form-control" readonly id="formpass" value="Hello World!" placeholder="Your Password Here!" />
+                    <div>
+                        <input type="text" class="form-control" readonly id="formpass" value="" placeholder="Your Password Here!" />
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Generate Password</button>
-                <button type="submit" class="btn btn-primary">Copy to Clipboard</button>
+                <button id="button1" type="submit" class="btn btn-primary">Generate Password</button>
+                <button id="button2" type="submit" class="btn btn-primary">Copy to Clipboard</button>
             </form>
             <br>
             <p>Passwords generated are going to be between 8 and 128 characters long, containing at least one of the following: uppercase character, lowercase character, numeric character and special character.</p>
@@ -26,10 +28,19 @@
     </body>
     <script type="text/javascript">
 
-    var randomPass = function randomPass(){
-        document.getElementById("formpass");
+    function randomPass(){
+        return document.getElementById("formpass").placeholder = getRandomInt();
     };
-    console.log(randomPass());
+    randomPass();
+
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min; 
+    }
+    getRandomInt(8, 128);
+
+
     // var specialChar = [" ", "!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "}", "|", "~", "\'", "\"", "\\" ]
     // console.log(specialChar[32]);
 
