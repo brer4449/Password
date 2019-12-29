@@ -44,16 +44,16 @@
     
 
     var specialChar = [" ", "!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "}", "|", "~", "\'", "\"", "\\" ]
-    console.log(specialChar[32]);
+    // console.log(specialChar[32]);
  
     var numChar = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
-    console.log(numChar[9]);
+    // console.log(numChar[9]);
 
     var lowChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-    console.log(lowChar[25]);
+    // console.log(lowChar[25]);
 
     var upChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-    console.log(upChar[25]);
+    // console.log(upChar[25]);
 
     var randomSpecial = getRandomInt(0, 32);
     var randomLetter = getRandomInt(0, 25);
@@ -69,8 +69,8 @@
         var up = (upChar[randomLetter]);
         var low = (lowChar[randomLetter]);
         var num = (numChar[randomNum]);
-        for(var i = 0; i<randomSpecial; i++){
-            console.log(specialChar[i]);
+        for(var i = 0; i<128; i*8){
+            console.log(specialChar[i])
         };
         return spec+up+low+num;
     };
