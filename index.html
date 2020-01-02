@@ -28,20 +28,7 @@
     </body>
     <script type="text/javascript">
 
-    function randomPass(){
-        return document.getElementById("formpass");
-    };
-    randomPass();
-
-    function getRandomInt(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min)) + min; 
-    }
-    getRandomInt(8, 128);
-    console.log(getRandomInt(8, 128))
-
-    
+    const enteredPass = prompt("Enter a password containing at least one of each of the following: a special character (!, @, #,etc.), a number, a little letter, a big letter. Password must be a minimum of 8 characters and a maximum of 128");
 
     var specialChar = [" ", "!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "}", "|", "~", "\'", "\"", "\\" ]
     // console.log(specialChar[32]);
@@ -55,27 +42,46 @@
     var upChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     // console.log(upChar[25]);
 
-    var randomSpecial = getRandomInt(0, 32);
-    var randomLetter = getRandomInt(0, 25);
-    var randomNum = getRandomInt(0, 9)
+    if (enteredPass.length < 8 || enteredPass.length > 128){
+        alert("Try again!")
+    } else {
+    }
+
+    function randomPass(){
+        specialChar.forEach()
+    };
+    randomPass();
+
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min; 
+    }
+    getRandomInt(8, 128);
+    console.log(getRandomInt(8, 128))
+
+
+    // var randomSpecial = getRandomInt(0, 32);
+    // var randomLetter = getRandomInt(0, 25);
+    // var randomNum = getRandomInt(0, 9)
     
     // (specialChar[randomSpecial]);
     // (upChar[randomLetter]);
     // (lowChar[randomLetter]);
     // (numChar[randomNum]);
 
-    function generatePassword(){
-        var spec = (specialChar[randomSpecial]);
-        var up = (upChar[randomLetter]);
-        var low = (lowChar[randomLetter]);
-        var num = (numChar[randomNum]);
-        for(var i = 0; i<128; i*8){
-            console.log(specialChar[i])
-        };
-        return spec+up+low+num;
-    };
+    // function generatePassword(){
+    //     var spec = (specialChar[randomSpecial]);
+    //     var up = (upChar[randomLetter]);
+    //     var low = (lowChar[randomLetter]);
+    //     var num = (numChar[randomNum]);
+    //     for(var i = 0; i<128; i*8){
+    //         console.log(specialChar[i])
+    //     };
+    //     return spec+up+low+num;
+    // };
     
-    console.log(generatePassword())
+    // console.log(generatePassword())
 
     </script>
 </html>
