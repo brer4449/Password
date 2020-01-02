@@ -45,43 +45,21 @@
     if (enteredPass.length < 8 || enteredPass.length > 128){
         alert("Try again!")
     } else {
-    }
+        randomPass();
+    };
 
     function randomPass(){
         specialChar.forEach()
     };
     randomPass();
 
-    function getRandomInt(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min)) + min; 
-    }
-    getRandomInt(8, 128);
-    console.log(getRandomInt(8, 128))
-
-
-    // var randomSpecial = getRandomInt(0, 32);
-    // var randomLetter = getRandomInt(0, 25);
-    // var randomNum = getRandomInt(0, 9)
-    
-    // (specialChar[randomSpecial]);
-    // (upChar[randomLetter]);
-    // (lowChar[randomLetter]);
-    // (numChar[randomNum]);
-
-    // function generatePassword(){
-    //     var spec = (specialChar[randomSpecial]);
-    //     var up = (upChar[randomLetter]);
-    //     var low = (lowChar[randomLetter]);
-    //     var num = (numChar[randomNum]);
-    //     for(var i = 0; i<128; i*8){
-    //         console.log(specialChar[i])
-    //     };
-    //     return spec+up+low+num;
-    // };
-    
-    // console.log(generatePassword())
+    // function getRandomInt(min, max) {
+    //     min = Math.ceil(min);
+    //     max = Math.floor(max);
+    //     return Math.floor(Math.random() * (max - min)) + min; 
+    // }
+    // getRandomInt(8, 128);
+    // console.log(getRandomInt(8, 128))
 
     </script>
 </html>
