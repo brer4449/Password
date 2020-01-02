@@ -12,54 +12,110 @@
         <br>
         <div class="container">
             <h1>Password Generator</h1>
+            <br>
+            <p>Password will contain at least one of each of the following: a special character, a number, a little letter, a big letter. Check which you'd like to be in your password. Password will be a minimum of 8 characters and a maximum of 128</p>
+            <br>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="check-low">
+                <label class="form-check-label" for="check-low">
+                    Uncapitalized letter
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="check-up">
+                <label class="form-check-label" for="check-up">
+                  Capitalized letter
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="check-num">
+                <label class="form-check-label" for="check-num">
+                  Number
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="check-special">
+                <label class="form-check-label" for="check-special">
+                  Special character
+                </label>
+            </div>
+            <br>
             <form>
                 <div class="form-group">
                     <label>Password</label>
                     <div>
-                        <input type="text" class="form-control" readonly id="formpass" value="" placeholder="Your Password Here!" />
+                        <input type="text" class="form-control" id="formpass" placeholder="Your Password Here!" />
                     </div>
                 </div>
                 <button id="button1" type="submit" class="btn btn-primary">Generate Password</button>
                 <button id="button2" type="submit" class="btn btn-primary">Copy to Clipboard</button>
             </form>
-            <br>
-            <p>Passwords generated are going to be between 8 and 128 characters long, containing at least one of the following: uppercase character, lowercase character, numeric character and special character.</p>
         </div>
     </body>
     <script type="text/javascript">
 
-    const enteredPass = prompt("Enter a password containing at least one of each of the following: a special character (!, @, #,etc.), a number, a little letter, a big letter. Password must be a minimum of 8 characters and a maximum of 128");
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min; 
+    }
+    console.log(getRandomInt(8, 128));
 
-    var specialChar = [" ", "!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "}", "|", "~", "\'", "\"", "\\" ]
+
+    let generatedPass = document.getElementById("formpass");
+
+    const specialChar = [" ", "!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "}", "|", "~", "\'", "\"", "\\" ]
     // console.log(specialChar[32]);
  
-    var numChar = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+    const numChar = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
     // console.log(numChar[9]);
 
-    var lowChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+    const lowChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
     // console.log(lowChar[25]);
 
-    var upChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+    const upChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     // console.log(upChar[25]);
 
-    if (enteredPass.length < 8 || enteredPass.length > 128){
+    let chars = [specialChar, numChar, lowChar, upChar]
+    console.log(chars)
+    console.log(chars[0])
+
+    if (parseInt(generatedPass.value) < 8 || parseInt(generatedPass.value) > 128){
         alert("Try again!")
     } else {
         randomPass();
     };
 
+    let checklow = document.getElementById("check-low");
+    let checkup = document.getElementById("check-up");
+    let checknum = document.getElementById("check-num");
+    let checkspec = document.getElementById("check-special");
+
+    checklow.value = lowChar;
+    checkup.value = upChar;
+    checknum.value = numChar;
+    checkspec.value = specialChar;
+
+    checklow.addEventListener()
+
+    const button1 = document.querySelector("#button1");
+    const button2 = document.getElementById("button2"); 
+
+    button1.addEventListener("click", randomPass);
+
+    button2.addEventListener("click", function(){
+        copyPass()
+    });
+
     function randomPass(){
-        specialChar.forEach()
+        // loop from 1 to number of characters in password
+        // for each one, choose one of the types allowed
+        // pick a value from that type and add it to the password string
+        // if (upChar.include(generatedPass) || lowChar.include(generatedPass) || numChar.include(generatedPass) || specialChar.include(generatedPass)){
+            return generatedPass;
+        // }
     };
     randomPass();
-
-    // function getRandomInt(min, max) {
-    //     min = Math.ceil(min);
-    //     max = Math.floor(max);
-    //     return Math.floor(Math.random() * (max - min)) + min; 
-    // }
-    // getRandomInt(8, 128);
-    // console.log(getRandomInt(8, 128))
 
     </script>
 </html>
