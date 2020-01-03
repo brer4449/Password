@@ -63,28 +63,26 @@
 
 
     let generatedPass = document.getElementById("formpass");
-
+    let genPass = (generatedPass.value = "");
+    console.log(genPass);
+    
     const specialChar = [" ", "!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "}", "|", "~", "\'", "\"", "\\" ]
     // console.log(specialChar[32]);
- 
+    // console.log(specialChar[getRandomInt(0, 32)]);
     const numChar = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
     // console.log(numChar[9]);
-
+    // console.log(numChar[getRandomInt(0, 9)]);
     const lowChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
     // console.log(lowChar[25]);
-
+    // console.log(lowChar[getRandomInt(0, 25)]);
     const upChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     // console.log(upChar[25]);
+    // console.log(upChar[getRandomInt(0, 25)]);
 
     let chars = [specialChar, numChar, lowChar, upChar]
-    console.log(chars)
-    console.log(chars[0])
+    // console.log(chars)
+    // console.log(chars[0])
 
-    if (parseInt(generatedPass.value) < 8 || parseInt(generatedPass.value) > 128){
-        alert("Try again!")
-    } else {
-        randomPass();
-    };
 
     let checklow = document.getElementById("check-low");
     let checkup = document.getElementById("check-up");
@@ -96,7 +94,7 @@
     checknum.value = numChar;
     checkspec.value = specialChar;
 
-    checklow.addEventListener()
+    // checklow.addEventListener("click", function(){    }
 
     const button1 = document.querySelector("#button1");
     const button2 = document.getElementById("button2"); 
@@ -111,9 +109,31 @@
         // loop from 1 to number of characters in password
         // for each one, choose one of the types allowed
         // pick a value from that type and add it to the password string
-        // if (upChar.include(generatedPass) || lowChar.include(generatedPass) || numChar.include(generatedPass) || specialChar.include(generatedPass)){
-            return generatedPass;
-        // }
+
+        let randomUp = upChar[getRandomInt(0, 25)];
+        let randomLow = lowChar[getRandomInt(0, 25)];
+        let randomNum = numChar[getRandomInt(0, 9)];
+        let randomSpec = specialChar[getRandomInt(0, 32)];
+        let randoInt = getRandomInt(2, 32)
+        for (let i = 0; i < randoInt; i++){
+            randomUp = upChar[getRandomInt(0, 25)];
+            console.log(randomUp)
+            let randomLow = lowChar[getRandomInt(0, 25)];
+            console.log(randomLow);
+            let randomNum = numChar[getRandomInt(0, 9)];
+            console.log(randomNum);
+            let randomSpec = specialChar[getRandomInt(0, 32)];
+            console.log(randomSpec);
+            console.log(randoInt);
+            // if (i != randoInt - 1 ) { continue; }
+            // else {
+                console.log(genPass+= randomUp + randomLow + randomNum + randomSpec);
+            // }
+            
+        } 
+        console.log(genPass);
+        return genPass;
+            
     };
     randomPass();
 
