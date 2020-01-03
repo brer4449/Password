@@ -1,141 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
         <link rel="stylesheet" href="assets/CSS/style.css" />
-        <title>Passwordz</title>
-    </head>
-    <body>
-        <br>
-        <div class="container">
-            <h1>Password Generator</h1>
-            <br>
-            <p>Password will contain at least one of each of the following: a special character, a number, a little letter, a big letter. Check which you'd like to be in your password. Password will be a minimum of 8 characters and a maximum of 128</p>
-            <br>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="check-low">
-                <label class="form-check-label" for="check-low">
-                    Uncapitalized letter
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="check-up">
-                <label class="form-check-label" for="check-up">
-                  Capitalized letter
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="check-num">
-                <label class="form-check-label" for="check-num">
-                  Number
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="check-special">
-                <label class="form-check-label" for="check-special">
-                  Special character
-                </label>
-            </div>
-            <br>
-            <form>
-                <div class="form-group">
-                    <label>Password</label>
-                    <div>
-                        <input type="text" class="form-control" id="formpass" placeholder="Your Password Here!" />
-                    </div>
-                </div>
-                <button id="button1" type="submit" class="btn btn-primary">Generate Password</button>
-                <button id="button2" type="submit" class="btn btn-primary">Copy to Clipboard</button>
-            </form>
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Password Generator</h1>
+      </header>
+      <div class="card">
+        <div class="card-header">
+          <h2>Generate a Password</h2>
         </div>
+        <div class="card-body">
+          <textarea
+            readonly
+            id="password"
+            placeholder="Your Secure Password"
+            aria-label="Generated Password"
+          ></textarea>
+        </div>
+        <div class="card-footer">
+          <button id="generate" class="btn">Generate Password</button>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="check-low">
+            <label class="form-check-label" for="check-low">
+                Uncapitalized letter
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="check-up">
+            <label class="form-check-label" for="check-up">
+              Capitalized letter
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="check-num">
+            <label class="form-check-label" for="check-num">
+              Number
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="check-special">
+            <label class="form-check-label" for="check-special">
+              Special character
+            </label>
+        </div>
+      </div>
+    </div>
     </body>
-    <script type="text/javascript">
-
-    function getRandomInt(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min)) + min; 
-    }
-    console.log(getRandomInt(8, 128));
-
-
-    let generatedPass = document.getElementById("formpass");
-    let genPass = (generatedPass.value = "");
-    console.log(genPass);
-    
-    const specialChar = [" ", "!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "}", "|", "~", "\'", "\"", "\\" ]
-    // console.log(specialChar[32]);
-    // console.log(specialChar[getRandomInt(0, 32)]);
-    const numChar = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
-    // console.log(numChar[9]);
-    // console.log(numChar[getRandomInt(0, 9)]);
-    const lowChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-    // console.log(lowChar[25]);
-    // console.log(lowChar[getRandomInt(0, 25)]);
-    const upChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-    // console.log(upChar[25]);
-    // console.log(upChar[getRandomInt(0, 25)]);
-
-    let chars = [specialChar, numChar, lowChar, upChar]
-    // console.log(chars)
-    // console.log(chars[0])
-
-
-    let checklow = document.getElementById("check-low");
-    let checkup = document.getElementById("check-up");
-    let checknum = document.getElementById("check-num");
-    let checkspec = document.getElementById("check-special");
-
-    checklow.value = lowChar;
-    checkup.value = upChar;
-    checknum.value = numChar;
-    checkspec.value = specialChar;
-
-    // checklow.addEventListener("click", function(){    }
-
-    const button1 = document.querySelector("#button1");
-    const button2 = document.getElementById("button2"); 
-
-    button1.addEventListener("click", randomPass);
-
-    button2.addEventListener("click", function(){
-        copyPass()
-    });
-
-    function randomPass(){
-        // loop from 1 to number of characters in password
-        // for each one, choose one of the types allowed
-        // pick a value from that type and add it to the password string
-
-        let randomUp = upChar[getRandomInt(0, 25)];
-        let randomLow = lowChar[getRandomInt(0, 25)];
-        let randomNum = numChar[getRandomInt(0, 9)];
-        let randomSpec = specialChar[getRandomInt(0, 32)];
-        let randoInt = getRandomInt(2, 32)
-        for (let i = 0; i < randoInt; i++){
-            randomUp = upChar[getRandomInt(0, 25)];
-            console.log(randomUp)
-            let randomLow = lowChar[getRandomInt(0, 25)];
-            console.log(randomLow);
-            let randomNum = numChar[getRandomInt(0, 9)];
-            console.log(randomNum);
-            let randomSpec = specialChar[getRandomInt(0, 32)];
-            console.log(randomSpec);
-            console.log(randoInt);
-            // if (i != randoInt - 1 ) { continue; }
-            // else {
-                console.log(genPass+= randomUp + randomLow + randomNum + randomSpec);
-            // }
-            
-        } 
-        console.log(genPass);
-        return genPass;
-            
-    };
-    randomPass();
-
-    </script>
 </html>
