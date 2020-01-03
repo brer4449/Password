@@ -1,3 +1,4 @@
+
 const specialChar = [" ", "!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "}", "|", "~", "\'", "\"", "\\" ]
 // console.log(specialChar[32]);
 // console.log(specialChar[getRandomInt(0, 32)]);
@@ -28,14 +29,17 @@ checkup.value = upChar;
 checknum.value = numChar;
 checkspec.value = specialChar;
 
+let passwordText = document.querySelector("#password");
+
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+
+generateBtn.addEventListener("click", randomPass)
 
 
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
-  var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 
@@ -66,14 +70,15 @@ function randomPass(){
         console.log(randoInt);
         // if (i != randoInt - 1 ) { continue; }
         // else {
-            console.log(genPass+= randomUp + randomLow + randomNum + randomSpec);
+            console.log(passwordText+= randomUp + randomLow + randomNum + randomSpec);
         // }
+        console.log(passwordText);
         
     } 
-    console.log(genPass);
+    console.log(passwordText);
     // event.preventDefault();
     // console.log(event.target)
-    return genPass;
+    return passwordText;
         
 };
 randomPass();
