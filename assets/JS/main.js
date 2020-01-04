@@ -1,5 +1,9 @@
-//eventhandler for form submission
+//https://www.youtube.com/watch?v=hdI2bqOjy3c&list=PLillGF-RfqbbnEGy3ROiLWk7JMCuSyQtX
+//https://www.w3schools.com/jsref/prop_checkbox_checked.asp
+//https://stackoverflow.com/questions/11599666/get-the-value-of-checked-checkbox
+//http://help.dottoro.com/ljpiwrem.php
 
+//eventhandler for form submission
 //determine what they entered into the form(number of characters and which other options)
     //make sure password length is a number 
     //make sure at least one of the options is selected
@@ -32,9 +36,13 @@ console.log(passwordContent);
 let passwordCombination;
 
 
-let passwordLength = document.getElementById("#passwordLength");
+let passwordLength = document.getElementsByClassName(".form-control").textContent="12";
+
 let passwordText = document.querySelector("#password").textContent;
 
+console.log(typeof passwordLength);
+let passLength = parseInt(passwordLength);
+console.log(typeof passLength);
 
 //attempt at making sure something got entered, and that it was a number
 // if (passwordLength === null) {
@@ -51,18 +59,20 @@ let checkup = document.getElementById("check-up");
 let checknum = document.getElementById("check-num");
 let checkspec = document.getElementById("check-special");
 
-function getCheckedState(event) {
-    event.preventDefault();
-    let input = document.querySelectorAll("form-check-input");
+function getCheckedState() {
+    let input = document.getElementsByClassName(".form-check-input");
     let isChecked = input.checked;
-    if(isChecked !== false){
+    if(isChecked == true){
         alert("The checkbox is clicked");
     } else {
-        alert("The checkbox is not clicked");
+        alert("The checkbox is NOT clicked");
     };
 }
 
-checklow.addEventListener("click", getCheckedState)
+checklow.addEventListener("click", getCheckedState);
+checkup.addEventListener("click", getCheckedState);
+checknum.addEventListener("click", getCheckedState);
+checkspec.addEventListener("click", getCheckedState);
 
 // if (document.getElementsByClassName("form-check-input").checked == true){
 //     if (checklow.checked == true){
@@ -103,21 +113,21 @@ function randomPass(){
 
     let randoInt = getRandomInt(2, 32)
 
-    for (let i = 0; i < randoInt; i++){
+    for (let i = 0; i < passLength; i++){
         randomUp = upChar[getRandomInt(0, 25)];
         // console.log(randomUp)
         let randomLow = lowChar[getRandomInt(0, 25)];
         // console.log(randomLow);
         let randomNum = numChar[getRandomInt(0, 9)];
         // console.log(randomNum);
-        let randomSpec = specialChar[getRandomInt(0, 32)];
+        let randomSpec = specialChar[getRandomInt(0, 25)];
         // console.log(randomSpec);
         // console.log(randoInt);
         // if (i != randoInt - 1 ) { continue; }
         // else {
             passwordText+= randomUp + randomLow + randomNum + randomSpec;
         // }
-        // console.log(passwordText);
+        console.log(passwordText);
         
     } 
     // console.log(passwordText);
