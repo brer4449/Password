@@ -2,6 +2,7 @@
 //https://www.w3schools.com/jsref/prop_checkbox_checked.asp
 //https://stackoverflow.com/questions/11599666/get-the-value-of-checked-checkbox
 //http://help.dottoro.com/ljpiwrem.php
+//https://app.slack.com/docs/TQV71RJJG/FS7CT6LF2?origin_team=TQV71RJJG&origin_channel=CQGSWN8KC
 
 //eventhandler for form submission
 //determine what they entered into the form(number of characters and which other options)
@@ -19,7 +20,7 @@ function getRandomInt(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min; 
 }
-console.log(getRandomInt(8, 128));
+// console.log(getRandomInt(8, 128));
 
 const lowChar = "abcdefghijklmnopqrstuvwxyz"
 const upChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -31,12 +32,12 @@ const specialChar = "!#$%&()*+-/:;<=>?@[]^_{}|~"
 let passwordContent;
 
 passwordContent = [lowChar, upChar, numChar, specialChar];
-console.log(passwordContent);
+// console.log(passwordContent);
 
 let passwordCombination;
 
 
-let passwordLength = document.getElementsByClassName(".form-control").textContent="12";
+let passwordLength = document.getElementsByClassName("form-control").textContent="10";
 
 let passwordText = document.querySelector("#password").textContent;
 
@@ -59,21 +60,41 @@ let checkup = document.getElementById("check-up");
 let checknum = document.getElementById("check-num");
 let checkspec = document.getElementById("check-special");
 
-function getCheckedState() {
-    let input = document.getElementsByClassName(".form-check-input");
+function getCheckedStateLow() {
+    let input = document.getElementById("check-low");
     let isChecked = input.checked;
-    if(isChecked == true){
-        alert("The checkbox is clicked");
-    } else {
-        alert("The checkbox is NOT clicked");
+    if(isChecked === true){
+        passwordCombination += passwordContent[0];
     };
 }
+function getCheckedStateUp() {
+    let input = document.getElementById("check-up");
+    let isChecked = input.checked;
+    if(isChecked === true){
+        passwordCombination += passwordContent[1];
+    };
+}
+function getCheckedStateNum() {
+    let input = document.getElementById("check-num");
+    let isChecked = input.checked;
+    if(isChecked === true){
+        passwordCombination += passwordContent[2];
+    };
+}
+function getCheckedStateSpecial() {
+    let input = document.getElementById("check-special");
+    let isChecked = input.checked;
+    if(isChecked === true){
+        passwordCombination += passwordContent[3];
+    }
+}
 
-checklow.addEventListener("click", getCheckedState);
-checkup.addEventListener("click", getCheckedState);
-checknum.addEventListener("click", getCheckedState);
-checkspec.addEventListener("click", getCheckedState);
+checklow.addEventListener("click", getCheckedStateLow);
+checkup.addEventListener("click", getCheckedStateUp);
+checknum.addEventListener("click", getCheckedStateNum);
+checkspec.addEventListener("click", getCheckedStateSpecial);
 
+//add this code block to the randomPass function at bottom
 // if (document.getElementsByClassName("form-check-input").checked == true){
 //     if (checklow.checked == true){
 //         passwordCombination += passwordContent[0];
@@ -89,7 +110,6 @@ checkspec.addEventListener("click", getCheckedState);
 // };
 
 
-
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
@@ -102,16 +122,30 @@ generateBtn.addEventListener("click", randomPass)
 
 //   passwordText.value = password;
 
-//   copyBtn.removeAttribute("disabled");
-//   copyBtn.focus();
-// }
+
 
 function randomPass(){
     // loop from 1 to number of characters in password
     // for each one, choose one of the types allowed
     // pick a value from that type and add it to the password string
 
-    let randoInt = getRandomInt(2, 32)
+    //assigning the getRandomInt function to one variable produces the same random number on each iteration of loop
+    // let randoInt = getRandomInt(0,25)
+
+    if (getCheckedStateLow === false && getCheckedStateUp === false && getCheckedStateNum === false && getCheckedStateSpecial === false){
+    //commented this out to test if checkedState functions will work
+    //     if (checklow.checked == true){
+    //         passwordCombination += passwordContent[0];
+    //     } else if (checkup.checked == true){
+    //         passwordCombination += passwordContent[1];
+    //     } else if (checknum.checked == true){
+    //         passwordCombination += passwordContent[2];
+    //     } else{
+    //         passwordCombination += passwordContent[3];
+    //     }; console.log(passwordCombination);
+    // } else {
+        alert ("At least one box must be checked!")
+    };
 
     for (let i = 0; i < passLength; i++){
         randomUp = upChar[getRandomInt(0, 25)];
@@ -127,7 +161,7 @@ function randomPass(){
         // else {
             passwordText+= randomUp + randomLow + randomNum + randomSpec;
         // }
-        console.log(passwordText);
+        // console.log(passwordText);
         
     } 
     // console.log(passwordText);
@@ -136,7 +170,7 @@ function randomPass(){
     return passwordText;
         
 };
-randomPass();
+console.log(randomPass());
 
 // function copyToClipboard() {
   // BONUS 
