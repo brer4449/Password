@@ -4,6 +4,13 @@
 //http://help.dottoro.com/ljpiwrem.php
 //https://app.slack.com/docs/TQV71RJJG/FS7CT6LF2?origin_team=TQV71RJJG&origin_channel=CQGSWN8KC
 
+//WHAT'S WRONG:
+//Need to make if statement onclick for checkboxes to get what values user wants in password
+//Need to connect password generated from randomPass() to the textbox
+//Need password length to be responsive. Currently whatever is put into input isn't going where it needs (ie passwordLength isn't receiving user input as expected)
+
+
+
 //eventhandler for form submission
 //determine what they entered into the form(number of characters and which other options)
     //make sure password length is a number 
@@ -132,6 +139,7 @@ function randomPass(){
     //assigning the getRandomInt function to one variable produces the same random number on each iteration of loop
     // let randoInt = getRandomInt(0,25)
 
+    //this if statement doesn't work. typeof of functions are functions not booleans.
     if (getCheckedStateLow === false && getCheckedStateUp === false && getCheckedStateNum === false && getCheckedStateSpecial === false){
     //commented this out to test if checkedState functions will work
     //     if (checklow.checked == true){
@@ -147,7 +155,7 @@ function randomPass(){
         alert ("At least one box must be checked!")
     };
 
-    for (let i = 0; i < passLength; i++){
+    for (let i = 0; i < passwordLength; i++){
         randomUp = upChar[getRandomInt(0, 25)];
         // console.log(randomUp)
         let randomLow = lowChar[getRandomInt(0, 25)];
