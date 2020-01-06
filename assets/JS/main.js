@@ -9,7 +9,33 @@
 //Need to connect password generated from randomPass() to the textbox
 //Need password length to be responsive. Currently whatever is put into input isn't going where it needs (ie passwordLength isn't receiving user input as expected)
 
+const lowChar = "abcdefghijklmnopqrstuvwxyz"
+const upChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+const numChar = "1234567890"
+const specialChar = "!#$%&()*+-/:;<=>?@[]^_{}|~"
 
+//Array of different character types
+let passwordContent = [lowChar, upChar, numChar, specialChar];
+//Variable set as blank, so passwordContent can get added to it
+let passwordCombination="";
+//Input value received from user, number entered (returns as string)
+let passwordLength = document.getElementsByClassName("form-control").value="4";
+//Variable reaching the text area
+let passwordText = document.getElementById("password");
+// console.log(passwordText);
+//Converting passwordLength to integer
+let passLength = parseInt(passwordLength);
+//Referencing each checkbox by Id
+let checklow = document.getElementById("check-low");
+let checkup = document.getElementById("check-up");
+let checknum = document.getElementById("check-num");
+let checkspec = document.getElementById("check-special");
+//Button variable
+var generateBtn = document.querySelector("#generate");
+//Event listener calling the randomPass function
+generateBtn.addEventListener("click", randomPass)
+let randomNum = Math.floor(Math.random() * (passLength)) - 1
+console.log(randomNum);
 
 //eventhandler for form submission
 //determine what they entered into the form(number of characters and which other options)
@@ -22,50 +48,13 @@
     //then add that to the new password string
 //when done, display new password
 
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min; 
-}
-// console.log(getRandomInt(8, 128));
 
-const lowChar = "abcdefghijklmnopqrstuvwxyz"
-const upChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-// console.log(upChar[25]);
-const numChar = "1234567890"
-const specialChar = "!#$%&()*+-/:;<=>?@[]^_{}|~"
-// console.log(specialChar[25]);
+// function getRandomInt() {
+//     return Math.floor(Math.random() * (passLength)) - 1; 
+// }
+// let randomNum = Math.floor(Math.random() * (passLength)) - 1
+// console.log(randomNum);
 
-let passwordContent;
-
-passwordContent = [lowChar, upChar, numChar, specialChar];
-// console.log(passwordContent);
-
-let passwordCombination;
-
-
-let passwordLength = document.getElementsByClassName("form-control").value="10";
-
-let passwordText = document.querySelector("#password").textContent;
-
-// console.log(passwordText);
-let passLength = parseInt(passwordLength);
-// console.log(typeof passLength);
-
-//attempt at making sure something got entered, and that it was a number
-// if (passwordLength === null) {
-//     alert("Try again!");
-// } else if (passwordText.toString() !== numChar){
-//     alert("Try again!");
-// } else {
-//     passwordText = passwordLength;
-// };
-
-
-let checklow = document.getElementById("check-low");
-let checkup = document.getElementById("check-up");
-let checknum = document.getElementById("check-num");
-let checkspec = document.getElementById("check-special");
 
 function getCheckedStateLow() {
     let input = document.getElementById("check-low");
@@ -101,34 +90,6 @@ checkup.addEventListener("click", getCheckedStateUp);
 checknum.addEventListener("click", getCheckedStateNum);
 checkspec.addEventListener("click", getCheckedStateSpecial);
 
-//add this code block to the randomPass function at bottom
-// if (document.getElementsByClassName("form-check-input").checked == true){
-//     if (checklow.checked == true){
-//         passwordCombination += passwordContent[0];
-//     } else if (checkup.checked == true){
-//         passwordCombination += passwordContent[1];
-//     } else if (checknum.checked == true){
-//         passwordCombination += passwordContent[2];
-//     } else{
-//         passwordCombination += passwordContent[3];
-//     }; console.log(passwordCombination);
-// } else {
-//     alert ("At least one box must be checked!")
-// };
-
-
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
-
-generateBtn.addEventListener("click", randomPass)
-
-
-// Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword();
-
-//   passwordText.value = password;
-
 
 
 function randomPass(){
@@ -136,40 +97,13 @@ function randomPass(){
     // for each one, choose one of the types allowed
     // pick a value from that type and add it to the password string
 
-    //assigning the getRandomInt function to one variable produces the same random number on each iteration of loop
-    // let randoInt = getRandomInt(0,25)
 
-    //this if statement doesn't work. typeof of functions are functions not booleans.
-    // if (getCheckedStateLow === false && getCheckedStateUp === false && getCheckedStateNum === false && getCheckedStateSpecial === false){
-    //commented this out to test if checkedState functions will work
-    //     if (checklow.checked == true){
-    //         passwordCombination += passwordContent[0];
-    //     } else if (checkup.checked == true){
-    //         passwordCombination += passwordContent[1];
-    //     } else if (checknum.checked == true){
-    //         passwordCombination += passwordContent[2];
-    //     } else{
-    //         passwordCombination += passwordContent[3];
-    //     }; console.log(passwordCombination);
-    // } else {
-    //     alert ("At least one box must be checked!")
-    // };
+    for (let i = 0; i < passLength; i++){
+        // passwordCombination[0];
+        passwordText.textContent += passwordCombination[0];
 
-    for (let i = 0; i < passwordLength; i++){
-        randomUp = upChar[getRandomInt(0, 25)];
-        // console.log(randomUp)
-        let randomLow = lowChar[getRandomInt(0, 25)];
-        // console.log(randomLow);
-        let randomNum = numChar[getRandomInt(0, 9)];
-        // console.log(randomNum);
-        let randomSpec = specialChar[getRandomInt(0, 25)];
-        // console.log(randomSpec);
-        // console.log(randoInt);
-        // if (i != randoInt - 1 ) { continue; }
-        // else {
-            passwordText+= randomUp + randomLow + randomNum + randomSpec;
-        // }
-        // console.log(passwordText);
+        console.log(passwordCombination)
+        console.log(passwordText);
         
     } 
     // console.log(passwordText);
