@@ -19,12 +19,10 @@ let passwordContent = [lowChar, upChar, numChar, specialChar];
 //Variable set as blank, so passwordContent can get added to it
 let passwordCombination="";
 //Input value received from user, number entered (returns as string)
-let passwordLength = document.getElementsByClassName("form-control").value="4";
+
 //Variable reaching the text area
 let passwordText = document.getElementById("password");
 // console.log(passwordText);
-//Converting passwordLength to integer
-let passLength = parseInt(passwordLength);
 //Referencing each checkbox by Id
 let checklow = document.getElementById("check-low");
 let checkup = document.getElementById("check-up");
@@ -33,9 +31,9 @@ let checkspec = document.getElementById("check-special");
 //Button variable
 var generateBtn = document.querySelector("#generate");
 //Event listener calling the randomPass function
-generateBtn.addEventListener("click", randomPass)
-let randomNum = Math.floor(Math.random() * (passLength)) - 1
-console.log(randomNum);
+generateBtn.addEventListener("click", randomPass);
+
+
 
 //eventhandler for form submission
 //determine what they entered into the form(number of characters and which other options)
@@ -92,15 +90,26 @@ checkspec.addEventListener("click", getCheckedStateSpecial);
 
 
 
-function randomPass(){
+function randomPass(event){
+    event.preventDefault();
+
+    // console.log(event.target.value);
     // loop from 1 to number of characters in password
     // for each one, choose one of the types allowed
     // pick a value from that type and add it to the password string
 
+    let passwordLength = parseInt(document.getElementById("passwordLength").value);
 
-    for (let i = 0; i < passLength; i++){
-        // passwordCombination[0];
-        passwordText.textContent += passwordCombination[0];
+    console.log(passwordCombination.length);
+
+    for (let i = 0; i < passwordLength; i++){
+        let randomNum = Math.floor(Math.random() * (passwordCombination.length - 1) + 1);
+        
+        
+        
+        // Math.floor(Math.random() * (passwordCombination.length)) - 1;
+
+        passwordText.textContent += passwordCombination[randomNum];
 
         console.log(passwordCombination)
         console.log(passwordText);
@@ -112,7 +121,8 @@ function randomPass(){
     return passwordText;
         
 };
-console.log(randomPass());
+// console.log(randomPass());
+
 
 // function copyToClipboard() {
   // BONUS 
