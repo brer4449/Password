@@ -44,13 +44,13 @@ passwordContent = [lowChar, upChar, numChar, specialChar];
 let passwordCombination;
 
 
-let passwordLength = document.getElementsByClassName("form-control").textContent="10";
+let passwordLength = document.getElementsByClassName("form-control").value="10";
 
 let passwordText = document.querySelector("#password").textContent;
 
-console.log(typeof passwordLength);
+// console.log(passwordText);
 let passLength = parseInt(passwordLength);
-console.log(typeof passLength);
+// console.log(typeof passLength);
 
 //attempt at making sure something got entered, and that it was a number
 // if (passwordLength === null) {
@@ -140,7 +140,7 @@ function randomPass(){
     // let randoInt = getRandomInt(0,25)
 
     //this if statement doesn't work. typeof of functions are functions not booleans.
-    if (getCheckedStateLow === false && getCheckedStateUp === false && getCheckedStateNum === false && getCheckedStateSpecial === false){
+    // if (getCheckedStateLow === false && getCheckedStateUp === false && getCheckedStateNum === false && getCheckedStateSpecial === false){
     //commented this out to test if checkedState functions will work
     //     if (checklow.checked == true){
     //         passwordCombination += passwordContent[0];
@@ -152,8 +152,8 @@ function randomPass(){
     //         passwordCombination += passwordContent[3];
     //     }; console.log(passwordCombination);
     // } else {
-        alert ("At least one box must be checked!")
-    };
+    //     alert ("At least one box must be checked!")
+    // };
 
     for (let i = 0; i < passwordLength; i++){
         randomUp = upChar[getRandomInt(0, 25)];
