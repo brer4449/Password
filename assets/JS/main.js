@@ -6,7 +6,7 @@ const specialChar = "!#$%&()*+-/:;<=>?@[]^_{}|~"
 //Array of different character types
 let passwordContent = [lowChar, upChar, numChar, specialChar];
 //Variable set as blank, so passwordContent can get added to it
-let passwordCombination="";
+let passwordCombination = "";
 //Input value received from user, number entered (returns as string)
 
 //Variable reaching the text area
@@ -24,38 +24,50 @@ generateBtn.addEventListener("click", randomPass);
 function getCheckedStateLow() {
     let input = document.getElementById("check-low");
     let isChecked = input.checked;
-    if(isChecked === true){
+    if (isChecked === true) {
         passwordCombination += passwordContent[0];
     } else {
-        passwordCombination -= passwordContent[0];
+        if (passwordCombination.includes(passwordContent[0])) {
+            passwordCombination = passwordCombination.replace(passwordContent[0], "");
+
+        }
     }
 };
 function getCheckedStateUp() {
     let input = document.getElementById("check-up");
     let isChecked = input.checked;
-    if(isChecked === true){
+    if (isChecked === true) {
         passwordCombination += passwordContent[1];
     } else {
-        passwordCombination -= passwordContent[1];
+        if (passwordCombination.includes(passwordContent[1])) {
+            passwordCombination = passwordCombination.replace(passwordContent[1], "");
+        };
     }
 };
 function getCheckedStateNum() {
     let input = document.getElementById("check-num");
     let isChecked = input.checked;
-    if(isChecked === true){
+    if (isChecked === true) {
         passwordCombination += passwordContent[2];
     } else {
-        passwordCombination -= passwordContent[2];
+        if (passwordCombination.includes(passwordContent[2])) {
+            passwordCombination = passwordCombination.replace(passwordContent[2], "");
+
+        }
     }
 };
 function getCheckedStateSpecial() {
     let input = document.getElementById("check-special");
     let isChecked = input.checked;
-    if(isChecked === true){
+    if (isChecked === true) {
         passwordCombination += passwordContent[3];
     } else {
-        passwordCombination -= passwordContent[3];
+        if (passwordCombination.includes(passwordContent[3])) {
+            passwordCombination = passwordCombination.replace(passwordContent[3], "");
+
+        }
     }
+    console.log(passwordCombination);
 };
 
 checklow.addEventListener("click", getCheckedStateLow);
@@ -63,16 +75,16 @@ checkup.addEventListener("click", getCheckedStateUp);
 checknum.addEventListener("click", getCheckedStateNum);
 checkspec.addEventListener("click", getCheckedStateSpecial);
 
-function randomPass(event){
+function randomPass(event) {
     event.preventDefault();
     passwordText.textContent = "";
     let passwordLength = parseInt(document.getElementById("passwordLength").value);
-    
-    for (let i = 0; i < passwordLength; i++){
-        
+
+    for (let i = 0; i < passwordLength; i++) {
+
         let randomNum = Math.floor(Math.random() * (passwordCombination.length - 1) + 1);
         passwordText.textContent += passwordCombination[randomNum];
         console.log(passwordCombination);
-    } 
+    }
     return passwordText;
 };
