@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="assets/CSS/style.css" />
-        <title>Password Generator</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="assets/CSS/style.css" />
+    <title>Password Generator</title>
   </head>
   <body>
     <div class="wrapper">
-      <header>
+      <header id="heading">
         <h1>Password Generator</h1>
       </header>
       <div class="card">
@@ -26,43 +29,68 @@
           ></textarea>
         </div>
         <div class="card-footer">
-          <button type="submit" id="generate" class="btn">Generate Password</button>
+          <button type="submit" id="generate" class="btn">
+            Generate Password
+          </button>
         </div>
         <form>
           <div class="form-group">
             <label for="passwordLength">Password Length</label>
-            <input type="text" class="form-control" id="passwordLength">
-            <small id="passwordLengthHelp" class="form-text text-muted" id="errorMsg">Make sure you enter a number between 8 and 128!</small>
+            <input type="text" class="form-control" id="passwordLength" />
+            <small
+              id="passwordLengthHelp"
+              class="form-text text-muted"
+              id="errorMsg"
+              >Make sure you enter a number between 8 and 128!</small
+            >
           </div>
         </form>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="abcdefghijklmnopqrstuvwxyz" id="check-low">
-            <!-- onclick="getCheckedState();" -->
-            <label class="form-check-label" for="check-low">
-                Uncapitalized letter
-            </label>
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value="abcdefghijklmnopqrstuvwxyz"
+            id="check-low"
+          />
+          <label class="form-check-label" for="check-low">
+            Uncapitalized letter
+          </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="check-up">
-            <label class="form-check-label" for="check-up">
-              Capitalized letter
-            </label>
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="check-up"
+          />
+          <label class="form-check-label" for="check-up">
+            Capitalized letter
+          </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="check-num">
-            <label class="form-check-label" for="check-num">
-              Number
-            </label>
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="check-num"
+          />
+          <label class="form-check-label" for="check-num">
+            Number
+          </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="check-special">
-            <label class="form-check-label" for="check-special">
-              Special character
-            </label>
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="check-special"
+          />
+          <label class="form-check-label" for="check-special">
+            Special character
+          </label>
         </div>
       </div>
     </div>
-    </body>
-    <script src="./assets/JS/main.js">
-    </script>
+  </body>
+  <script src="./assets/JS/main.js"></script>
 </html>
