@@ -64,7 +64,6 @@ function getCheckedStateSpecial() {
       passwordCombination = passwordCombination.replace(passwordArray[3], "");
     }
   }
-  //   console.log(passwordCombination);
 }
 
 checklow.addEventListener("click", getCheckedStateLow);
@@ -98,11 +97,11 @@ function randomPass(event) {
         Math.random() * (passwordCombination.length - 1) + 1
       );
       passwordEl.textContent += passwordCombination[randomNum];
-      console.log(passwordCombination);
+      // console.log(passwordCombination);
     }
     return passwordEl;
   } else {
-    showError("Please check your numbers");
+    showError("Please check your password length and try again!");
     return;
   }
 }
