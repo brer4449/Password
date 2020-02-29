@@ -13,11 +13,11 @@ This application is a simple random password generator. The user will check whic
 ## Functionality
 
 Landing page
-![first example of working application](https://github.com/brer4449/sample/blob/master/assets/images/password1.png)
-Demonstration of application
-![second example of working application](https://github.com/brer4449/sample/blob/master/assets/images/password2.png)
+![Landing page](https://github.com/brer4449/sample/blob/master/assets/images/password1.png)
+Demonstration of working application
+![Demonstration of working application](https://github.com/brer4449/sample/blob/master/assets/images/password2.png)
 Example of error if incorrect/no password length is entered (goes away after three seconds)
-![third example of working application](https://github.com/brer4449/sample/blob/master/assets/images/password3.png)
+![Example of error if incorrect/no password length](https://github.com/brer4449/sample/blob/master/assets/images/password3.png)
 
 ## Technologies
 
