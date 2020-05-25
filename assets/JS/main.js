@@ -7,8 +7,8 @@ const specialChar = "!#$%&()*+-/:;<=>?@[]^_{}|~";
 let charTypeArray = [lowChar, upChar, numChar, specialChar];
 //Variable set as blank, so charTypeArray can get added to it
 let passwordCombination = "";
-//Input value received from user, number entered (returns as string)
-
+// Variable that grabs input value of password length
+const passLength = document.getElementById("passwordLength");
 //Variable reaching the text area
 const passwordOutput = document.getElementById("password");
 //Referencing each checkbox by Id
@@ -73,11 +73,10 @@ checkspec.addEventListener("click", getCheckedStateSpecial);
 
 showError = (error) => {
   const errorDiv = document.createElement("div");
-  const wrapper = document.querySelector(".wrapper");
-  const header = document.querySelector("#heading");
+  const cardBody = document.querySelector(".card-body");
   errorDiv.className = "alert alert-danger";
   errorDiv.appendChild(document.createTextNode(error));
-  wrapper.insertBefore(errorDiv, header);
+  cardBody.insertBefore(errorDiv, passwordOutput);
   setTimeout(clearError, 3000);
 };
 
@@ -88,9 +87,18 @@ clearError = () => {
 function randomPass(event) {
   event.preventDefault();
   passwordOutput.textContent = "";
-  let passwordLength = parseInt(
-    document.getElementById("passwordLength").value
-  );
+  let passwordLength = parseInt(passLength.value);
+  if (
+    !checklow.checked &&
+    !checkup.checked &&
+    !checknum.checked &&
+    !checkspec.checked
+  ) {
+    passLength.value = "";
+    passwordOutput.textContent = "";
+    showError("Please check at least one field to generate password");
+    return;
+  }
   if (passwordLength >= 8 && passwordLength <= 128) {
     for (let i = 0; i < passwordLength; i++) {
       let randomNum = Math.floor(
