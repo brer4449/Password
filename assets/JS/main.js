@@ -4,74 +4,74 @@ const numChar = "1234567890";
 const specialChar = "!#$%&()*+-/:;<=>?@[]^_{}|~";
 
 //Array of different character types
-let passwordArray = [lowChar, upChar, numChar, specialChar];
-//Variable set as blank, so passwordArray can get added to it
+let charTypeArray = [lowChar, upChar, numChar, specialChar];
+//Variable set as blank, so charTypeArray can get added to it
 let passwordCombination = "";
 //Input value received from user, number entered (returns as string)
 
 //Variable reaching the text area
-let passwordEl = document.getElementById("password");
+const passwordOutput = document.getElementById("password");
 //Referencing each checkbox by Id
-let checklow = document.getElementById("check-low");
-let checkup = document.getElementById("check-up");
-let checknum = document.getElementById("check-num");
-let checkspec = document.getElementById("check-special");
+const checklow = document.getElementById("check-low");
+const checkup = document.getElementById("check-up");
+const checknum = document.getElementById("check-num");
+const checkspec = document.getElementById("check-special");
 //Button variable
-let generateBtn = document.querySelector("#generate");
+const generateBtn = document.querySelector("#generate");
 //Event listener calling the randomPass function
 generateBtn.addEventListener("click", randomPass);
 
-function getCheckedStateLow() {
+getCheckedStateLow = () => {
   let input = document.getElementById("check-low");
   let isChecked = input.checked;
   if (isChecked) {
-    passwordCombination += passwordArray[0];
+    passwordCombination += charTypeArray[0];
   } else {
-    if (passwordCombination.includes(passwordArray[0])) {
-      passwordCombination = passwordCombination.replace(passwordArray[0], "");
+    if (passwordCombination.includes(charTypeArray[0])) {
+      passwordCombination = passwordCombination.replace(charTypeArray[0], "");
     }
   }
-}
-function getCheckedStateUp() {
+};
+getCheckedStateUp = () => {
   let input = document.getElementById("check-up");
   let isChecked = input.checked;
   if (isChecked) {
-    passwordCombination += passwordArray[1];
+    passwordCombination += charTypeArray[1];
   } else {
-    if (passwordCombination.includes(passwordArray[1])) {
-      passwordCombination = passwordCombination.replace(passwordArray[1], "");
+    if (passwordCombination.includes(charTypeArray[1])) {
+      passwordCombination = passwordCombination.replace(charTypeArray[1], "");
     }
   }
-}
-function getCheckedStateNum() {
+};
+getCheckedStateNum = () => {
   let input = document.getElementById("check-num");
   let isChecked = input.checked;
   if (isChecked) {
-    passwordCombination += passwordArray[2];
+    passwordCombination += charTypeArray[2];
   } else {
-    if (passwordCombination.includes(passwordArray[2])) {
-      passwordCombination = passwordCombination.replace(passwordArray[2], "");
+    if (passwordCombination.includes(charTypeArray[2])) {
+      passwordCombination = passwordCombination.replace(charTypeArray[2], "");
     }
   }
-}
-function getCheckedStateSpecial() {
+};
+getCheckedStateSpecial = () => {
   let input = document.getElementById("check-special");
   let isChecked = input.checked;
   if (isChecked) {
-    passwordCombination += passwordArray[3];
+    passwordCombination += charTypeArray[3];
   } else {
-    if (passwordCombination.includes(passwordArray[3])) {
-      passwordCombination = passwordCombination.replace(passwordArray[3], "");
+    if (passwordCombination.includes(charTypeArray[3])) {
+      passwordCombination = passwordCombination.replace(charTypeArray[3], "");
     }
   }
-}
+};
 
 checklow.addEventListener("click", getCheckedStateLow);
 checkup.addEventListener("click", getCheckedStateUp);
 checknum.addEventListener("click", getCheckedStateNum);
 checkspec.addEventListener("click", getCheckedStateSpecial);
 
-function showError(error) {
+showError = (error) => {
   const errorDiv = document.createElement("div");
   const wrapper = document.querySelector(".wrapper");
   const header = document.querySelector("#heading");
@@ -79,15 +79,15 @@ function showError(error) {
   errorDiv.appendChild(document.createTextNode(error));
   wrapper.insertBefore(errorDiv, header);
   setTimeout(clearError, 3000);
-}
+};
 
-function clearError() {
+clearError = () => {
   document.querySelector(".alert").remove();
-}
+};
 
 function randomPass(event) {
   event.preventDefault();
-  passwordEl.textContent = "";
+  passwordOutput.textContent = "";
   let passwordLength = parseInt(
     document.getElementById("passwordLength").value
   );
@@ -96,10 +96,10 @@ function randomPass(event) {
       let randomNum = Math.floor(
         Math.random() * (passwordCombination.length - 1) + 1
       );
-      passwordEl.textContent += passwordCombination[randomNum];
+      passwordOutput.textContent += passwordCombination[randomNum];
       // console.log(passwordCombination);
     }
-    return passwordEl;
+    return passwordOutput;
   } else {
     showError("Please check your password length and try again!");
     return;
