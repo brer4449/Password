@@ -11,20 +11,8 @@ This application is a simple random password generator. The user will check whic
 
 ## Functionality
 
-Landing page
-
-<!-- ![Landing page](https://github.com/brer4449/sample/blob/master/assets/images/password1.png)
-Demonstration of working application -->
-
-<img src="https://imgur.com/995BKoJ.gif">
-
-<!-- Example of error if incorrect/no password length is entered (goes away after three seconds)
-![Example of error if incorrect/no password length](https://github.com/brer4449/sample/blob/master/assets/images/password3.png) -->
+![Demonstration of working app](./assets/images/Password.gif)
 
 ## Technologies
 
 Built with Vanilla JS & Bootstrap
-
-## Github Link
-
-https://github.com/brer4449/sample
