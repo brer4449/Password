@@ -16,3 +16,4 @@ This application is a simple random password generator. The user will check whic
 ## Technologies
 
 Built with Vanilla JS & Bootstrap
+test
